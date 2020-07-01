@@ -1,0 +1,80 @@
+Script started on Thu 23 Apr 2020 04:27:09 PM EDT
+]0;n00963396@osprey:~/tst[?1034h[n00963396@osprey tst]$ sh test_shar
+x - created lock directory `_sh28930'.
+x - extracting doc.txt (text)
+x - extracting Makefile (text)
+x - extracting p5 (text)
+x - extracting p5.txt (text)
+x - extracting test2.txt (binary)
+x - extracting project1_n00963396.py (binary)
+x - extracting project2_n00963396.py (binary)
+x - removed lock directory `_sh28930'.
+]0;n00963396@osprey:~/tst[n00963396@osprey tst]$ ls
+doc.txt   [0m[01;32mp5[0m      project1_n00963396.py  test2.txt  typescript
+Makefile  p5.txt  project2_n00963396.py  test_shar
+[m]0;n00963396@osprey:~/tst[n00963396@osprey tst]$ cat tet2[K[Kst2.txt
+int sub(int z)
+{
+   if (x > y)
+      return(z+z);
+   else 
+      x = 5;
+}
+void foo(void)
+{
+  int x;
+  int y;
+  y = sub(x);
+}
+void main(void)
+{
+  int x;
+  int y;
+  int z;
+  int m;
+   while(x + 3 * y > 5)
+   {
+     x = y + m / z;
+     m = x - y + z * m / z;
+   }
+}]0;n00963396@osprey:~/tst[n00963396@osprey tst]$ ./p5 test2.txt
+1    func    sub     int     1            
+2    param                   z            
+3    alloc   4               z            
+4    compr   x       y       _t0          
+5    BRLT    _t0             9         bpf = 5
+6    add     z       z       _t1          
+7    return                   _t1          
+8    BR                      10        bpo = 9
+9    asign   5               x            
+10   end     func    sub                  
+11   func    foo     void    2            
+12   alloc   4               x            
+13   alloc   4               y            
+14   arg                     x            
+15   call    sub     1       _t2          
+16   asign   _t2             y            
+17   end     func    foo                  
+18   func    main    void    0            
+19   alloc   4               x            
+20   alloc   4               y            
+21   alloc   4               z            
+22   alloc   4               m            
+23   mult    3       y       _t3       bpw = 23
+24   add     x       _t3     _t4          
+25   compr   _t4     5       _t5          
+26   BRLT    _t5             36        bpo = 26
+27   div     m       z       _t6          
+28   add     y       _t6     _t7          
+29   asign   _t7             x            
+30   sub     x       y       _t8          
+31   mult    z       m       _t9          
+32   div     _t9     z       _t10         
+33   add     _t8     _t10    _t11         
+34   asign   _t11            m            
+35   BR                      23           
+36   end     func    main                 
+]0;n00963396@osprey:~/tst[n00963396@osprey tst]$ exit
+exit
+
+Script done on Thu 23 Apr 2020 04:28:56 PM EDT

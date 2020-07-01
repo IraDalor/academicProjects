@@ -1,0 +1,13 @@
+int j[10];
+int foo(int m[]){
+}
+void sub(int a) {}
+void main(void) {
+        int f;
+        int l;
+        int z;
+        {        
+            int k[10];
+        }
+	2 + 2 * 2 / 2 + (2 / 2 / 2 - (2 * 2));
+}

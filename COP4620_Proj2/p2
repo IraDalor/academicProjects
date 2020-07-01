@@ -1,0 +1,2 @@
+#!/bin/bash
+python3.6 project2_n00963396.py $1

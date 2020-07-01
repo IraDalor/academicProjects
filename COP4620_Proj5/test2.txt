@@ -1,0 +1,25 @@
+int sub(int z)
+{
+   if (x > y)
+      return(z+z);
+   else 
+      x = 5;
+}
+void foo(void)
+{
+  int x;
+  int y;
+  y = sub(x);
+}
+void main(void)
+{
+  int x;
+  int y;
+  int z;
+  int m;
+   while(x + 3 * y > 5)
+   {
+     x = y + m / z;
+     m = x - y + z * m / z;
+   }
+}

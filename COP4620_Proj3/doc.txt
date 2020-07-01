@@ -1,0 +1,18 @@
+Ethan Paffe
+COP4620 M/W 1:30 P.M.  Project 2
+Lex and YACC
+Dr. Eggen
+
+Submitted: 02/27/20
+Due: 02/27/20
+
+This is a straightfoward implementation of a given grammar for SQL queries
+using LEX and YACC tools. LEX functions to ensure only tokens acceptable to
+the given language are used and YACC uses the grammar given to check the
+syntax of the given input. The make command is used to produce an executable
+as well as supporting .c and .o files. The user can then run the program using
+the executable with a file to be read by the program as a parameter. The
+program will simply print ACCEPT or REJECT based on the contents of the file.
+REJECT may be printed for either tokens outside of the language, determined
+by LEX, or due to a syntax error, found by YACC.
+

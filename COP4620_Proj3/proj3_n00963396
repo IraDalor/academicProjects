@@ -1,0 +1,483 @@
+#!/bin/sh
+# This is a shell archive (produced by GNU sharutils 4.7).
+# To extract the files from this archive, save it to some FILE, remove
+# everything before the `#!/bin/sh' line above, then type `sh FILE'.
+#
+lock_dir=_sh08054
+# Made on 2020-02-27 12:50 EST by <n00963396@osprey.unfcsd.unf.edu>.
+# Source directory was `/home/96/n00963396/test'.
+#
+# Existing files will *not* be overwritten, unless `-c' is specified.
+#
+# This shar contains:
+# length mode       name
+# ------ ---------- ------------------------------------------
+#   1769 -rw-r--r-- proj3.l
+#   8641 -rw-r--r-- proj3.y
+#    237 -rw-r--r-- makefile
+#    761 -rw-r--r-- doc.txt
+#   1113 -rw-r--r-- typescript
+#
+MD5SUM=${MD5SUM-md5sum}
+f=`${MD5SUM} --version | egrep '^md5sum .*(core|text)utils'`
+test -n "${f}" && md5check=true || md5check=false
+${md5check} || \
+  echo 'Note: not verifying md5sums.  Consider installing GNU coreutils.'
+save_IFS="${IFS}"
+IFS="${IFS}:"
+gettext_dir=FAILED
+locale_dir=FAILED
+first_param="$1"
+for dir in $PATH
+do
+  if test "$gettext_dir" = FAILED && test -f $dir/gettext \
+     && ($dir/gettext --version >/dev/null 2>&1)
+  then
+    case `$dir/gettext --version 2>&1 | sed 1q` in
+      *GNU*) gettext_dir=$dir ;;
+    esac
+  fi
+  if test "$locale_dir" = FAILED && test -f $dir/shar \
+     && ($dir/shar --print-text-domain-dir >/dev/null 2>&1)
+  then
+    locale_dir=`$dir/shar --print-text-domain-dir`
+  fi
+done
+IFS="$save_IFS"
+if test "$locale_dir" = FAILED || test "$gettext_dir" = FAILED
+then
+  echo=echo
+else
+  TEXTDOMAINDIR=$locale_dir
+  export TEXTDOMAINDIR
+  TEXTDOMAIN=sharutils
+  export TEXTDOMAIN
+  echo="$gettext_dir/gettext -s"
+fi
+if (echo "testing\c"; echo 1,2,3) | grep c >/dev/null
+then if (echo -n test; echo 1,2,3) | grep n >/dev/null
+     then shar_n= shar_c='
+'
+     else shar_n=-n shar_c= ; fi
+else shar_n= shar_c='\c' ; fi
+f=shar-touch.$$
+st1=200112312359.59
+st2=123123592001.59
+st2tr=123123592001.5 # old SysV 14-char limit
+st3=1231235901
+
+if touch -am -t ${st1} ${f} >/dev/null 2>&1 && \
+   test ! -f ${st1} && test -f ${f}; then
+  shar_touch='touch -am -t $1$2$3$4$5$6.$7 "$8"'
+
+elif touch -am ${st2} ${f} >/dev/null 2>&1 && \
+   test ! -f ${st2} && test ! -f ${st2tr} && test -f ${f}; then
+  shar_touch='touch -am $3$4$5$6$1$2.$7 "$8"'
+
+elif touch -am ${st3} ${f} >/dev/null 2>&1 && \
+   test ! -f ${st3} && test -f ${f}; then
+  shar_touch='touch -am $3$4$5$6$2 "$8"'
+
+else
+  shar_touch=:
+  echo
+  ${echo} 'WARNING: not restoring timestamps.  Consider getting and'
+  ${echo} 'installing GNU `touch'\'', distributed in GNU coreutils...'
+  echo
+fi
+rm -f ${st1} ${st2} ${st2tr} ${st3} ${f}
+#
+if test ! -d ${lock_dir}
+then : ; else ${echo} 'lock directory '${lock_dir}' exists'
+  exit 1
+fi
+if mkdir ${lock_dir}
+then ${echo} 'x - created lock directory `'${lock_dir}\''.'
+else ${echo} 'x - failed to create lock directory `'${lock_dir}\''.'
+  exit 1
+fi
+# ============= proj3.l ==============
+if test -f 'proj3.l' && test "$first_param" != -c; then
+  ${echo} 'x -SKIPPING proj3.l (file already exists)'
+else
+${echo} 'x - extracting proj3.l (text)'
+  sed 's/^X//' << 'SHAR_EOF' > 'proj3.l' &&
+%{
+#include "proj3.tab.h"
+extern int yylval;
+void lexerror();
+%}
+Newline       [\r\n]
+Delimiter     [ \t]
+Whitespace    {Delimiter}+
+Digit         [0-9]
+%%
+{Newline}        ;
+{Delimiter}      ;
+{Whitespace}     ;
+{Digit}          {return(DIGIT);}
+","              {return(COMMA);}
+"["             {return(LBRACK);}
+"]"             {return(RBRACK);}
+"("             {return(LPAR);}
+")"             {return(RPAR);}
+"<>"             {return(LTGT);}
+"<="             {return(LTEQ);}
+">="             {return(GTEQ);}
+"<"              {return(LT);}
+">"              {return(GT);}
+"="              {return(EQ);}
+"RENAME"         {return(RENAME);}
+"AS"             {return(AS);}
+"WHERE"          {return(WHERE);}
+"UNION"          {return(UNION);}
+"INTERSECT"      {return(INTERSECT);}
+"MINUS"          {return(MINUS);}
+"TIMES"          {return(TIMES);}
+"JOIN"           {return(JOIN);}
+"DIVIDEBY"       {return(DIVIDEBY);}
+"CNO"            {return(CNO);}
+"CITY"           {return(CITY);}
+"CNAME"          {return(CNAME);}
+"SNO"            {return(SNO);}
+"PNO"            {return(PNO);}
+"TQTY"           {return(TQTY);}
+"SNAME"          {return(SNAME);}
+"QUOTA"          {return(QUOTA);}
+"PNAME"          {return(PNAME);}
+"COST"           {return(COST);}
+"AVQTY"          {return(AVQTY);}
+"S#"             {return(SPOUND);}
+"STATUS"         {return(STATUS);}
+"P#"             {return(PPOUND);}
+"COLOR"          {return(COLOR);}
+"WEIGHT"         {return(WEIGHT);}
+"QTY"            {return(QTY);}
+"S"              {return(S);}
+"P"              {return(P);}
+"SP"             {return(SP);}
+"PRDCT"          {return(PRDCT);}
+"CUST"           {return(CUST);}
+"ORDERS"         {return(ORDERS);}
+X.                {lexerror();}
+%%
+void lexerror(){
+X    printf("REJECT\n");
+X    exit(0);
+}
+SHAR_EOF
+  (set 20 20 02 27 01 45 28 'proj3.l'; eval "$shar_touch") &&
+  chmod 0644 'proj3.l'
+if test $? -ne 0
+then ${echo} 'restore of proj3.l failed'
+fi
+  if ${md5check}
+  then (
+       ${MD5SUM} -c >/dev/null 2>&1 || ${echo} 'proj3.l: MD5 check failed'
+       ) << \SHAR_EOF
+861d8703e1726fbece13a0f5706e9d6c  proj3.l
+SHAR_EOF
+  else
+test `LC_ALL=C wc -c < 'proj3.l'` -ne 1769 && \
+  ${echo} 'restoration warning:  size of proj3.l is not 1769'
+  fi
+fi
+# ============= proj3.y ==============
+if test -f 'proj3.y' && test "$first_param" != -c; then
+  ${echo} 'x -SKIPPING proj3.y (file already exists)'
+else
+${echo} 'x - extracting proj3.y (text)'
+  sed 's/^X//' << 'SHAR_EOF' > 'proj3.y' &&
+%{
+#include <stdio.h>
+#include <stdlib.h>
+extern yylex();
+extern yytext[];
+extern FILE *yyin;
+%}
+%start start
+%token DIGIT COMMA LBRACK RBRACK LPAR RPAR LTGT LTEQ GTEQ LT GT EQ RENAME AS WHERE UNION INTERSECT 
+%token MINUS TIMES JOIN DIVIDEBY CNO CITY CNAME SNO PNO TQTY SNAME COST AVQTY SPOUND STATUS PPOUND
+%token COLOR WEIGHT QTY S P SP PRDCT CUST ORDERS PNAME QUOTA
+%%
+start                      : expression                                {
+X                                                    // printf("ACCEPT\n") 
+X                                                                       };
+expression                 : one_relation_expression                   {
+X                                                                       };
+X                           | two_relation_expression                   {
+X                                                                       };
+one_relation_expression    : renaming                                  {
+X                                                                       };
+X                           | restriction                               {
+X                                                                       };
+X                           | projection                                {
+X                                                                       };
+renaming                   : term RENAME attribute AS attribute        {
+X                                                                       };
+term                       : relation                                  {
+X                                                                       };
+X                           | LPAR expression RPAR                      {
+X                                                                       };
+restriction                : term WHERE comparison                     {
+X                                                                       };
+projection                 : term                                      {
+X                                                                       };
+X                           | term LBRACK attribute_commalist RBRACK    {
+X                                                                       };
+attribute_commalist        : attribute                                 {
+X                                                                       };
+X                           | attribute COMMA attribute_commalist       {
+X                                                                       };
+two_relation_expression    : projection binary_operation expression    {
+X                                                                       };
+binary_operation           : UNION                                     {
+X                                                                       };
+X                           | INTERSECT                                 {
+X                                                                       };
+X                           | MINUS                                     {
+X                                                                       };
+X                           | TIMES                                     {
+X                                                                       };
+X                           | JOIN                                      {
+X                                                                       };
+X                           | DIVIDEBY                                  {
+X                                                                       };
+comparison                 : attribute compare number                  {
+X                                                                       };
+compare                    : LT                                        {
+X                                                                       };
+X                           | GT                                        {
+X                                                                       };
+X                           | LTEQ                                      {
+X                                                                       };
+X                           | GTEQ                                      {
+X                                                                       };
+X                           | EQ                                        {
+X                                                                       };
+X                           | LTGT                                      {
+X                                                                       };
+number                     : val                                       {
+X                                                                       };
+X                           | val number                                {
+X                                                                       };
+val                        : DIGIT                                     {
+X                                                                       };
+attribute                  : CNO                                       {
+X                                                                       };
+X                           | CITY                                      {
+X                                                                       };
+X                           | CNAME                                     {
+X                                                                       };
+X                           | SNO                                       {
+X                                                                       };
+X                           | PNO                                       {
+X                                                                       };
+X                           | TQTY                                      {
+X                                                                       };
+X                           | SNAME                                     {
+X                                                                       };
+X                           | QUOTA                                     {
+X                                                                       };
+X                           | PNAME                                     {
+X                                                                       };
+X                           | COST                                      {
+X                                                                       };
+X                           | AVQTY                                     {
+X                                                                       };
+X                           | SPOUND                                    {
+X                                                                       };
+X                           | STATUS                                    {
+X                                                                       };
+X                           | PPOUND                                    {
+X                                                                       };
+X                           | COLOR                                     {
+X                                                                       };
+X                           | WEIGHT                                    {
+X                                                                       };
+X                           | QTY                                       {
+X                                                                       };
+relation                   : S                                         {
+X                                                                       };
+X                           | P                                         {
+X                                                                       };
+X                           | SP                                        {
+X                                                                       };
+X                           | PRDCT                                     {
+X                                                                       };
+X                           | CUST                                      {
+X                                                                       };
+X                           | ORDERS                                    {
+X                                                                       };
+%%
+int main(int argc, char *argv[])
+{
+X    yyin = fopen(argv[1], "r");
+X    if (!yyin)
+X    {
+X        printf("File not found\n");
+X        exit(0);
+X    }
+X    yyparse();
+X    printf("ACCEPT\n");
+}
+yyerror()
+{
+X    printf("REJECT\n");
+X    exit(0);
+}
+yywrap()
+{
+}
+SHAR_EOF
+  (set 20 20 02 27 02 04 37 'proj3.y'; eval "$shar_touch") &&
+  chmod 0644 'proj3.y'
+if test $? -ne 0
+then ${echo} 'restore of proj3.y failed'
+fi
+  if ${md5check}
+  then (
+       ${MD5SUM} -c >/dev/null 2>&1 || ${echo} 'proj3.y: MD5 check failed'
+       ) << \SHAR_EOF
+b9061173d68b936d09e03c49c21829b8  proj3.y
+SHAR_EOF
+  else
+test `LC_ALL=C wc -c < 'proj3.y'` -ne 8641 && \
+  ${echo} 'restoration warning:  size of proj3.y is not 8641'
+  fi
+fi
+# ============= makefile ==============
+if test -f 'makefile' && test "$first_param" != -c; then
+  ${echo} 'x -SKIPPING makefile (file already exists)'
+else
+${echo} 'x - extracting makefile (text)'
+  sed 's/^X//' << 'SHAR_EOF' > 'makefile' &&
+p3:  proj3.tab.o lex.yy.o 
+X	cc -o p3 lex.yy.o proj3.tab.o 
+X
+proj3.tab.o: proj3.tab.c
+X	cc -c proj3.tab.c
+X
+proj3.tab.c: proj3.y
+X	bison -d proj3.y
+X
+lex.yy.o: lex.yy.c proj3.tab.h
+X	cc -c lex.yy.c
+X
+lex.yy.c: proj3.l proj3.tab.c
+X	flex proj3.l
+SHAR_EOF
+  (set 20 20 02 25 01 25 44 'makefile'; eval "$shar_touch") &&
+  chmod 0644 'makefile'
+if test $? -ne 0
+then ${echo} 'restore of makefile failed'
+fi
+  if ${md5check}
+  then (
+       ${MD5SUM} -c >/dev/null 2>&1 || ${echo} 'makefile: MD5 check failed'
+       ) << \SHAR_EOF
+df345a9bb5f9cbbe67f28c2853914600  makefile
+SHAR_EOF
+  else
+test `LC_ALL=C wc -c < 'makefile'` -ne 237 && \
+  ${echo} 'restoration warning:  size of makefile is not 237'
+  fi
+fi
+# ============= doc.txt ==============
+if test -f 'doc.txt' && test "$first_param" != -c; then
+  ${echo} 'x -SKIPPING doc.txt (file already exists)'
+else
+${echo} 'x - extracting doc.txt (text)'
+  sed 's/^X//' << 'SHAR_EOF' > 'doc.txt' &&
+Ethan Paffe
+COP4620 M/W 1:30 P.M.  Project 2
+Lex and YACC
+Dr. Eggen
+X
+Submitted: 02/27/20
+Due: 02/27/20
+X
+This is a straightfoward implementation of a given grammar for SQL queries
+using LEX and YACC tools. LEX functions to ensure only tokens acceptable to
+the given language are used and YACC uses the grammar given to check the
+syntax of the given input. The make command is used to produce an executable
+as well as supporting .c and .o files. The user can then run the program using
+the executable with a file to be read by the program as a parameter. The
+program will simply print ACCEPT or REJECT based on the contents of the file.
+REJECT may be printed for either tokens outside of the language, determined
+by LEX, or due to a syntax error, found by YACC.
+X
+SHAR_EOF
+  (set 20 20 02 27 12 38 15 'doc.txt'; eval "$shar_touch") &&
+  chmod 0644 'doc.txt'
+if test $? -ne 0
+then ${echo} 'restore of doc.txt failed'
+fi
+  if ${md5check}
+  then (
+       ${MD5SUM} -c >/dev/null 2>&1 || ${echo} 'doc.txt: MD5 check failed'
+       ) << \SHAR_EOF
+c086661f631bdea546e9b40f03ec7033  doc.txt
+SHAR_EOF
+  else
+test `LC_ALL=C wc -c < 'doc.txt'` -ne 761 && \
+  ${echo} 'restoration warning:  size of doc.txt is not 761'
+  fi
+fi
+# ============= typescript ==============
+if test -f 'typescript' && test "$first_param" != -c; then
+  ${echo} 'x -SKIPPING typescript (file already exists)'
+else
+${echo} 'x - extracting typescript (binary)'
+  sed 's/^X//' << 'SHAR_EOF' | uudecode &&
+begin 600 typescript
+M4V-R:7!T('-T87)T960@;VX@5&AU(#(W($9E8B`R,#(P(#$R.C0Q.C0V(%!-
+M($535`H;73`[;C`P.38S,SDV0&]S<')E>3I^+W1E<W0'&UL_,3`S-&A;;C`P
+M.38S,SDV0&]S<')E>2!T97-T720@=6YS:&%R('!R;VHS7VXP,#DV,S,Y-@T*
+M+VAO;64O.38O;C`P.38S,SDV+W1E<W0O<')O:C-?;C`P.38S,SDV.@T*>"`M
+M(&-R96%T960@;&]C:R!D:7)E8W1O<GD@8%]S:#`V-#0P)RX-"G@@+2!E>'1R
+M86-T:6YG('!R;VHS+FP@*'1E>'0I#0IX("T@97AT<F%C=&EN9R!P<F]J,RYY
+M("AT97AT*0T*>"`M(&5X=')A8W1I;F<@;6%K969I;&4@*'1E>'0I#0IX("T@
+M97AT<F%C=&EN9R!T97-T,RYT>'0@*'1E>'0I#0IX("T@97AT<F%C=&EN9R!T
+M97-T-"YT>'0@*'1E>'0I#0IX("T@97AT<F%C=&EN9R!D;V,N='AT("AT97AT
+M*0T*>"`M(')E;6]V960@;&]C:R!D:7)E8W1O<GD@8%]S:#`V-#0P)RX-"AM=
+M,#MN,#`Y-C,S.39`;W-P<F5Y.GXO=&5S=`=;;C`P.38S,SDV0&]S<')E>2!T
+M97-T720@8V%T('1E<W0(&UM+"!M;2P@;6TL(&UM+"!M;2P@;6TL(&UM+"!M;
+M2P<'!P<';6%K90T*8FES;VX@+60@<')O:C,N>0T*8V,@+6,@<')O:C,N=&%B
+M+F,-"F9L97@@<')O:C,N;`T*8V,@+6,@;&5X+GEY+F,-"F-C("UO('`S(&QE
+M>"YY>2YO('!R;VHS+G1A8BYO(`T*&UTP.VXP,#DV,S,Y-D!O<W!R97DZ?B]T
+M97-T!UMN,#`Y-C,S.39`;W-P<F5Y('1E<W1=)"!C870@=&5S=#,N='AC"!M;
+M2W0-"D]21$524UM#2519+$-.04U%+%-.3RQ3(UT-"AM=,#MN,#`Y-C,S.39`
+M;W-P<F5Y.GXO=&5S=`=;;C`P.38S,SDV0&]S<')E>2!T97-T720@+B]P,R!T
+M97-T,S0(&UM++G1X=`T*04-#15!4#0H;73`[;C`P.38S,SDV0&]S<')E>3I^
+M+W1E<W0'6VXP,#DV,S,Y-D!O<W!R97D@=&5S=%TD(&-A="!T97-T-"YT>'0-
+M"E,@4D5.04U%($%"0R!!4R!#2519#0H;73`[;C`P.38S,SDV0&]S<')E>3I^
+M+W1E<W0'6VXP,#DV,S,Y-D!O<W!R97D@=&5S=%TD("XO<#,@=&5S=#0N='AT
+M#0I214I%0U0-"AM=,#MN,#`Y-C,S.39`;W-P<F5Y.GXO=&5S=`=;;C`P.38S
+M,SDV0&]S<')E>2!T97-T720@97AI=`T*97AI=`T*"E-C<FEP="!D;VYE(&]N
+A(%1H=2`R-R!&96(@,C`R,"`Q,CHT,CHT."!032!%4U0*
+`
+end
+SHAR_EOF
+  (set 20 20 02 27 12 42 48 'typescript'; eval "$shar_touch") &&
+  chmod 0644 'typescript'
+if test $? -ne 0
+then ${echo} 'restore of typescript failed'
+fi
+  if ${md5check}
+  then (
+       ${MD5SUM} -c >/dev/null 2>&1 || ${echo} 'typescript: MD5 check failed'
+       ) << \SHAR_EOF
+7a47c2a937f7937965a4e77f2d769ac6  typescript
+SHAR_EOF
+  else
+test `LC_ALL=C wc -c < 'typescript'` -ne 1113 && \
+  ${echo} 'restoration warning:  size of typescript is not 1113'
+  fi
+fi
+if rm -fr ${lock_dir}
+then ${echo} 'x - removed lock directory `'${lock_dir}\''.'
+else ${echo} 'x - failed to remove lock directory `'${lock_dir}\''.'
+  exit 1
+fi
+exit 0

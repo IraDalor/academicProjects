@@ -1,0 +1,28 @@
+Ethan Paffe
+COP4620 M/W 1:30 P.M.  Project 5
+C- Parser/ Code Generator
+Dr. Eggen
+
+Submitted: 04/23/20
+Due: 04/23/20
+
+This is a parser that works in conjunction with the lexical analyzer to 
+determine if a given file contains C- tokens written in the proper order. 
+The parser functions based on a provided grammar for C- that has been 
+modified to function properly in the application of a LL(1) type parser 
+by removing left recursion and left factoring that would otherwise cause 
+the parser to loop endlessly. Each rule has been implimented as a function 
+that calls the next approprite function based on the symbol observed. The 
+parser must have the lexical anaalyzer present in the same file in order 
+to receive tokens from the file given. In order to use the parser one need 
+only call its script, named p2, with a text file given as a parameter. The 
+parser will simply print "ACCEPT" if the given file is appropriately 
+written in C- and "REJECT" otherwise, no additional files will be created 
+in the proccess of the parsers execution. No special concerns exist 
+regarding the parser at this time.
+
+Project five is built into the parser built for project two. The program 
+is invoked the same way and passed the same file, its output is now either 
+intermediate code in quadruples or REJECT if the input file has incorrect 
+syntax or invalid tokens. This program works by implicitly traversing the 
+parse tree while parsing in order to generate the output. 

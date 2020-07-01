@@ -1,0 +1,29 @@
+Script started on Thu 27 Feb 2020 12:41:46 PM EST
+]0;n00963396@osprey:~/test[?1034h[n00963396@osprey test]$ unshar proj3_n00963396
+/home/96/n00963396/test/proj3_n00963396:
+x - created lock directory `_sh06440'.
+x - extracting proj3.l (text)
+x - extracting proj3.y (text)
+x - extracting makefile (text)
+x - extracting test3.txt (text)
+x - extracting test4.txt (text)
+x - extracting doc.txt (text)
+x - removed lock directory `_sh06440'.
+]0;n00963396@osprey:~/test[n00963396@osprey test]$ cat test[K[K[K[K[K[K[K[Kmake
+bison -d proj3.y
+cc -c proj3.tab.c
+flex proj3.l
+cc -c lex.yy.c
+cc -o p3 lex.yy.o proj3.tab.o 
+]0;n00963396@osprey:~/test[n00963396@osprey test]$ cat test3.txc[Kt
+ORDERS[CITY,CNAME,SNO,S#]
+]0;n00963396@osprey:~/test[n00963396@osprey test]$ ./p3 test34[K.txt
+ACCEPT
+]0;n00963396@osprey:~/test[n00963396@osprey test]$ cat test4.txt
+S RENAME ABC AS CITY
+]0;n00963396@osprey:~/test[n00963396@osprey test]$ ./p3 test4.txt
+REJECT
+]0;n00963396@osprey:~/test[n00963396@osprey test]$ exit
+exit
+
+Script done on Thu 27 Feb 2020 12:42:48 PM EST
