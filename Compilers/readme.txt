@@ -1,6 +1,6 @@
 This is a series of projects done in python for my compilers course taken in Spring of 2020 at University of North Florida with Dr.Eggen.
 
-There were 5 projects total, of which I have uploaded the last four for the sake of simplicity. Each projects cummulatively builds upon the last, adding a new
+There are 5 projects total, of which I have uploaded the last four for the sake of simplicity. Each projects cummulatively builds upon the last, adding a new
 component with each iteration. Rules of the grammar used will be listed below. Project requirements will be placed in readme files in each folder for each
 respective project, with porject 2 folder containing the requirements for both the first and second projects.
 
@@ -10,7 +10,7 @@ Project 1: Lexical Analyzer
 Project 2: Syntax Analyzer
 Project 3: An Exercise Using Lex and YACC
 Project 4: Semantic Analysis
-Project 5: Code Gen (A work in progress that continues to be tinkered with)
+Project 5: Code Generation
 
 The grammar used (The language is a reduced version of C):
 
