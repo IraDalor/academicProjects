@@ -1,6 +1,0 @@
-bread AND wine, 10
-wine OR cake, 6
-beer OR salmon AND beef OR NOT beer, 7
-NOT soup AND NOT beef, 4
-beef AND NOT beer, 5
-NOT cake OR beer, 2

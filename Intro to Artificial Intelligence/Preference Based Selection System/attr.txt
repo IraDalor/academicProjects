@@ -1,0 +1,8 @@
+appetizer1: bread, salad
+appetizer2: soup, dumplings
+entree1: beef, chicken
+entree2: salmon, lobster
+drink1: beer, coke
+drink2: water, wine
+dessert1: cake, ice-cream
+dessert2: cookie, tea
