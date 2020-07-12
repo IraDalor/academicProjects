@@ -1,0 +1,6 @@
+NOT bread OR NOT cake
+soup OR beer
+NOT salmon OR cake
+NOT cake OR NOT beer
+NOT soup OR beef
+NOT beef OR beer
